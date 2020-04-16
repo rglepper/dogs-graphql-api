@@ -1,8 +1,14 @@
 import { Module } from '@nestjs/common';
 import { DogsResolver } from './dogs.resolver';
-import { AppService } from '../app.service';
+import { DogsService } from './dogs.service';
+import { MongooseModule } from '@nestjs/mongoose';
+import { DogSchema } from './dog.schema';
 
 @Module({
-	providers: [DogsResolver, AppService]
+	imports: [MongooseModule.forFeature([{name: 'Dog', schema: DogSchema}])],
+	providers: [
+		DogsResolver,
+		DogsService
+	]
 })
 export class DogsModule {}
