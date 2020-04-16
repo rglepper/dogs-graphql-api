@@ -14,4 +14,7 @@ export class DogsService {
 		return await dog.save();
 	}
 
+	async getDogs(): Promise<Dog[]> {
+		return await this.dogModel.find().exec();
+	}
 }
